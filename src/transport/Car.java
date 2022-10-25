@@ -1,92 +1,47 @@
 package transport;
 
 import java.time.LocalDate;
+import java.util.Locale;
 
 
-public class Car {
-    public class Key {
-        private final boolean remoteStart;
-        private final boolean keylessAccess;
-
-        public Key(boolean remoteStart, boolean keylessAccess) {
-            this.remoteStart = remoteStart;
-            this.keylessAccess = keylessAccess;
-        }
-
-        public boolean hasRemoteStart() {
-            return remoteStart;
-        }
-
-        public boolean hasKeylessAccess() {
-            return keylessAccess;
-        }
-    }
-
-    public class Insurance {
-        private final LocalDate validityPeriod;
-        private final float cost;
-        private final String number;
-
-        public Insurance(LocalDate validityPeriod, float cost, String number) {
-            this.validityPeriod = validityPeriod != null ? validityPeriod : LocalDate.now().plusDays(3);
-            if (cost > 0) this.cost = cost;
-            else this.cost = Math.abs(cost);
-            if (number != null) this.number = number;
-            else this.number = "default";
-        }
-        public boolean isInsuranceValid(){
-            return (LocalDate.now().compareTo(validityPeriod)<0);
-        }
-
-        public LocalDate getValidityPeriod() {
-            return validityPeriod;
-        }
-
-        public float getCost() {
-            return cost;
-        }
-
-        public String getNumber() {
-            return number;
-        }
-    }
-
-    private final String brand;
-    private final String model;
+public class Car extends Transport {
     private double engineVolume;
-    private String color;
-    private final int productionYear;
-    private final String productionCountry;
     private String transmission;
     private final String bodyStyle;
-    private int seats;
+    private final int seats;
     boolean winterTires;
     String regNumber;
+    int maxSpeed;
     private Key key;
     private Insurance insurance;
 
     public Car(String brand, String model, double engineVolume, String color, int productionYear,
-               String productionCountry, String transmission, String bodyStyle, int seats, boolean winterTires, String regNumber) {
-        if (brand == null || brand == "") this.brand = "default";
-        else this.brand = brand;
-        if (model == null || model == "") this.model = "default";
-        else this.model = model;
-        setEngineVolume(engineVolume);
-        setColor(color);
-        if (productionYear <= 0) this.productionYear = 2000;
-        else this.productionYear = productionYear;
-        if (productionCountry == null || productionCountry == "") this.productionCountry = "default";
-        else this.productionCountry = productionCountry;
-        if (bodyStyle == null || brand == "") this.bodyStyle = "default";
+               String productionCountry, String transmission, String bodyStyle, int seats, boolean winterTires,
+               String regNumber, int maxSpeed, String fuelType) {
+        super(brand, model, color, productionYear, productionCountry, maxSpeed);
+        if (bodyStyle == null || bodyStyle == "") this.bodyStyle = "default";
         else this.bodyStyle = bodyStyle;
         if (seats <= 0) this.seats = 5;
         else this.seats = seats;
+        setEngineVolume(engineVolume);
         setTransmission(transmission);
         setWinterTires(winterTires);
         setRegNumber(regNumber);
+        setFuelType(fuelType);
 
     }
-
+    @Override
+    public void refill() {
+        if (getFuelType().toLowerCase() == "disel" || getFuelType().toLowerCase() == "дизель" ){
+            System.out.println("Необходима дозаправка дизелем");
+        }
+        else if (getFuelType().toLowerCase() == "petrol" || getFuelType().toLowerCase() == "бензин" ){
+            System.out.println("Необходима дозаправка бензином");
+        }
+        else if (getFuelType().toLowerCase() == "electro" || getFuelType().toLowerCase() == "электро" ){
+            System.out.println("Необходима дозарядка на специальной электро-парковке");
+        }
+    }
     public void setSeasonTires() {
         int currentMonth = LocalDate.now().getMonthValue();
         if (currentMonth >= 10 || currentMonth <= 4) winterTires = true;
@@ -127,15 +82,6 @@ public class Car {
         else this.engineVolume = engineVolume;
     }
 
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        if (color == null || color == "") this.color = "белый";
-        else this.color = color;
-    }
-
     public String getTransmission() {
         return transmission;
     }
@@ -160,16 +106,62 @@ public class Car {
         this.winterTires = winterTires;
     }
 
+    public int getSeats() {
+        return seats;
+    }
+@Override
+    public String toString() {
+        return "Автомобиль " + super.toString()  +
+                ", объем двигателя - " + engineVolume +" количество мест: "+getSeats();
+    }
 
-    public String toString3() {
-        return brand + ' ' + model + ", " +
-                productionYear + " год выпуска," + productionCountry +
-                ", " + color + " цвета, " +
-                "объем двигателя - " + engineVolume;
+    public class Key {
+        private final boolean remoteStart;
+        private final boolean keylessAccess;
 
+        public Key(boolean remoteStart, boolean keylessAccess) {
+            this.remoteStart = remoteStart;
+            this.keylessAccess = keylessAccess;
+        }
 
+        public boolean hasRemoteStart() {
+            return remoteStart;
+        }
+
+        public boolean hasKeylessAccess() {
+            return keylessAccess;
+        }
+    }
+
+    public class Insurance {
+        private final LocalDate validityPeriod;
+        private final float cost;
+        private final String number;
+
+        public Insurance(LocalDate validityPeriod, float cost, String number) {
+            this.validityPeriod = validityPeriod != null ? validityPeriod : LocalDate.now().plusDays(3);
+            if (cost > 0) this.cost = cost;
+            else this.cost = Math.abs(cost);
+            if (number != null) this.number = number;
+            else this.number = "default";
+        }
+
+        public boolean isInsuranceValid() {
+            return (LocalDate.now().compareTo(validityPeriod) < 0);
+        }
+
+        public LocalDate getValidityPeriod() {
+            return validityPeriod;
+        }
+
+        public float getCost() {
+            return cost;
+        }
+
+        public String getNumber() {
+            return number;
+        }
     }
 
 
 }
-

@@ -1,15 +1,21 @@
+import Animals.*;
+import transport.Bus;
 import transport.Car;
 import transport.Car.Key;
+import transport.Train;
+
 public class Main {
 
     public static void main(String[] args) {
         //task1_1and2();
         //task1_3();
-        task1_4();
+        //task1_4();
         task1_5();
-        task2_1();
-        task2_2();
-
+        //task2_1();
+        //task2_2();
+        task3_2();
+        task3_3();
+        task3_5();
     }
 
     /*public static void task1_1and2() {
@@ -101,7 +107,7 @@ public class Main {
     }*/
 
     private static void task1_4() {
-        Human Максим = new Human(35, "Максим","");
+        Human Максим = new Human(35, "Максим", "");
         Human Аня = new Human(29, "Аня", "Москва");
         Human Катя = new Human(-28, "Катя", "Калининград");
         Human Артем = new Human(27, "Артем", "Москва");
@@ -121,8 +127,8 @@ public class Main {
 
 
     private static void task1_5() {
-        Car Lada_Grande = new Car("Lada","Grande", 1.7, "желтый", 2015,
-                "сборка в России","auto","sedan",5,false,"a345bb080");
+        Car Lada_Grande = new Car("Lada", "Grande", 0, "желтый", 2015,
+                "сборка в России", "auto", "sedan", 5, false, "a345bb080", 120, "electro");
 
         /*Car Audi_A8 = new Car("Audi", "A8 50 L TDI quattro",
                 3.0, "", 2020,
@@ -145,7 +151,7 @@ public class Main {
         //task2_3
         System.out.println("Lada_Grande.checkValidNumber() = " + Lada_Grande.checkValidNumber());
         //task 2.4
-        Key keyLada = Lada_Grande.new Key(false,false);
+        Key keyLada = Lada_Grande.new Key(false, false);
         System.out.println("keyLada.hasKeylessAccess() = " + keyLada.hasKeylessAccess());
         System.out.println("keyLada.hasRemoteStart() = " + keyLada.hasRemoteStart());
         //task 2.5
@@ -153,9 +159,14 @@ public class Main {
         //System.out.println("insuranceLada.getCost() = " + insuranceLada.getCost());
         //System.out.println("insuranceLada.getNumber() = " + insuranceLada.getNumber());
 
+        //task 3.2
+        System.out.println(Lada_Grande);
 
+        //task 3.4
+        Lada_Grande.refill();
     }
 
+    /*
     public static void task2_1 () {
     Human Владимир = new Human(21, "Владимир", "Казань");
         System.out.println(Владимир.toString2());
@@ -173,6 +184,71 @@ public class Main {
         Bouquet bouquet1 = new Bouquet(new Flower[]{Роза, Хризантема, Пион, Роза, Роза});
         System.out.println("bouquet1.getBouquetCoast() = " + bouquet1.getBouquetCoast());
         System.out.println("bouquet1.getBouquetSpan() = " + bouquet1.getBouquetSpan());
+    }*/
+    public static void task3_2() {
+        Train Lastochka = new Train("Ласточка", "B-901", "", 2011, "Россия",
+                301, 3500, 7, "Белорусский вокзал", "Минск-Пассажирский", 11);
+        System.out.println(Lastochka);
+        Train Leningrad = new Train("Ленинград", "D-125", "", 2019, "Россия",
+                270, 1700, 9, "Ленинградский вокзал", "Ленинград-Пассажирский", 11);
+        System.out.println(Leningrad);
+        //task 3_4
+        Lastochka.refill();
     }
 
+    public static void task3_3() {
+        Bus Ford_Transit = new Bus("Ford", "Transit", "бирюзовый", 2020, "USA",
+                200, 8, "бензин");
+        System.out.println(Ford_Transit);
+        Bus Peugeot_Boxer = new Bus("Peugeot", "Boxer", "", 2013, "Франция",
+                180, 17, "дизель");
+        System.out.println(Peugeot_Boxer);
+        Bus Higer_KLQ6119TQ = new Bus("Higer", " KLQ6119TQ", "желтый", 2011,
+                "Китай", 160, 55, "дизель");
+        System.out.println(Higer_KLQ6119TQ);
+
+        //task 3_4
+        Peugeot_Boxer.refill();
+    }
+
+    public static void task3_5() {
+        Herbivores Gazel = new Herbivores("Gazo", 1, "Africa", 50, "трава");
+        Herbivores Giraffa = new Herbivores("Gir", 14, "South Africa", 55, "листва");
+        Herbivores Horse = new Herbivores("Aisac", 4, "Siberia", 60, "сено");
+        System.out.println("Газель: " + Gazel);
+        System.out.println("Жираф: " + Giraffa);
+        System.out.println("Лошадь: " + Horse);
+        System.out.println("Наличие дубликатов среди млекопитающих:" + (Gazel.equals(Giraffa)||Horse.equals(Gazel)));
+
+        Predators Hyena = new Predators("Asante", 3, "Africa", 63, "антилопа");
+        Predators Tiger = new Predators("Shere Khan", 9, "India", 65, "косуля");
+        Predators Bear = new Predators("Baloo", 9, "India", 56, "грызуны");
+        System.out.println("Гиена: " + Hyena);
+        System.out.println("Тигр: " + Tiger);
+        System.out.println("Медведь: " + Bear);
+        System.out.println("Наличие дубликатов среди хищников: " + (Hyena.equals(Tiger) || Bear.equals(Hyena)));
+
+        Amphibians Frog = new Amphibians("Naveen", 6, "India");
+        Amphibians Cerberus = new Amphibians("Naga", 4, "East Asia");
+        System.out.println("Лягушка: " + Frog);
+        System.out.println("Уж пресноводный: " + Cerberus);
+        System.out.println("Наличие дубликатов среди амфибий: "+ (Frog.equals(Cerberus)));
+
+        Flightless Peacock = new Flightless("Pavel", 17, "India", "бег");
+        Flightless Penguin = new Flightless("Skipper", 15, "Antarctica", "плавать");
+        Flightless Dodo = new Flightless("Mavrik", 15, "In our memory", "бег");
+        System.out.println("Павлин: " + Peacock);
+        System.out.println("Пингвин: " + Penguin);
+        System.out.println("Додо птица: " + Dodo);
+        System.out.println("Наличие дубликатов среди нелетающих птиц: " + (Peacock.equals(Penguin)));
+
+        Flying Swallow = new Flying("Chif-chif", 5, "Europe", "короткий парящий");
+        Flying Albatros = new Flying("Bratuha>", 5, "New Zealand", "длительный парящий");
+        Flying Falcon = new Flying("Finist>", 16, "Africa", "пикирующий");
+        System.out.println("Ласточка: " + Swallow);
+        System.out.println("Альбатрос: " + Albatros);
+        System.out.println("Сокол: " + Falcon);
+        System.out.println("Наличие дубликатов среди летающих птиц: " + (Swallow.equals(Albatros) || Falcon.equals(Swallow)));
+    }
 }
+
