@@ -19,8 +19,7 @@ public class Herbivores extends Mammals {
     }
 
     public void setFoodType(String foodType) {
-        if (foodType == null || foodType.isEmpty() || foodType.isBlank()) this.foodType = "мох";
-        else this.foodType = foodType;
+        this.foodType = ValidationUtil.valOrDefString(foodType, "grass");
     }
 
 

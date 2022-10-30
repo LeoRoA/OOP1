@@ -1,7 +1,6 @@
 package transport;
 
 import java.time.LocalDate;
-import java.util.Locale;
 
 
 public class Car extends Transport {
@@ -10,8 +9,8 @@ public class Car extends Transport {
     private final String bodyStyle;
     private final int seats;
     boolean winterTires;
-    String regNumber;
-    int maxSpeed;
+    private String regNumber;
+
     private Key key;
     private Insurance insurance;
 
@@ -19,29 +18,28 @@ public class Car extends Transport {
                String productionCountry, String transmission, String bodyStyle, int seats, boolean winterTires,
                String regNumber, int maxSpeed, String fuelType) {
         super(brand, model, color, productionYear, productionCountry, maxSpeed);
-        if (bodyStyle == null || bodyStyle == "") this.bodyStyle = "default";
-        else this.bodyStyle = bodyStyle;
-        if (seats <= 0) this.seats = 5;
-        else this.seats = seats;
+        this.bodyStyle = ValidationUtil.valOrDefString(bodyStyle,"sedan");
+        this.seats = ValidationUtil.valOrDefInt(seats, 5);
         setEngineVolume(engineVolume);
         setTransmission(transmission);
         setWinterTires(winterTires);
         setRegNumber(regNumber);
         setFuelType(fuelType);
 
+
     }
+
     @Override
     public void refill() {
-        if (getFuelType().toLowerCase() == "disel" || getFuelType().toLowerCase() == "дизель" ){
+        if (getFuelType().toLowerCase() == "disel" || getFuelType().toLowerCase() == "дизель") {
             System.out.println("Необходима дозаправка дизелем");
-        }
-        else if (getFuelType().toLowerCase() == "petrol" || getFuelType().toLowerCase() == "бензин" ){
+        } else if (getFuelType().toLowerCase() == "petrol" || getFuelType().toLowerCase() == "бензин") {
             System.out.println("Необходима дозаправка бензином");
-        }
-        else if (getFuelType().toLowerCase() == "electro" || getFuelType().toLowerCase() == "электро" ){
+        } else if (getFuelType().toLowerCase() == "electro" || getFuelType().toLowerCase() == "электро") {
             System.out.println("Необходима дозарядка на специальной электро-парковке");
         }
     }
+
     public void setSeasonTires() {
         int currentMonth = LocalDate.now().getMonthValue();
         if (currentMonth >= 10 || currentMonth <= 4) winterTires = true;
@@ -73,13 +71,42 @@ public class Car extends Transport {
         return allowedSymbols.contains("" + symbol);
     }
 
+    public String getBodyStyle() {
+        return bodyStyle;
+    }
+
+    @Override
+    public int getMaxSpeed() {
+        return maxSpeed;
+    }
+
+    @Override
+    public void setMaxSpeed(int maxSpeed) {
+        this.maxSpeed = maxSpeed;
+    }
+
+    public Key getKey() {
+        return key;
+    }
+
+    public void setKey(Key key) {
+        this.key = key;
+    }
+
+    public Insurance getInsurance() {
+        return insurance;
+    }
+
+    public void setInsurance(Insurance insurance) {
+        this.insurance = insurance;
+    }
+
     public double getEngineVolume() {
         return engineVolume;
     }
 
     public void setEngineVolume(double engineVolume) {
-        if (engineVolume <= 0) this.engineVolume = 1.5;
-        else this.engineVolume = engineVolume;
+        this.engineVolume = ValidationUtil.valOrDefDouble(engineVolume, 1.5);
     }
 
     public String getTransmission() {
@@ -87,7 +114,7 @@ public class Car extends Transport {
     }
 
     public void setTransmission(String transmission) {
-        this.transmission = transmission;
+        this.transmission = ValidationUtil.valOrDefString(transmission, "default");
     }
 
     public String getRegNumber() {
@@ -109,10 +136,11 @@ public class Car extends Transport {
     public int getSeats() {
         return seats;
     }
-@Override
+
+    @Override
     public String toString() {
-        return "Автомобиль " + super.toString()  +
-                ", объем двигателя - " + engineVolume +" количество мест: "+getSeats();
+        return "Автомобиль " + super.toString() +
+                ", объем двигателя - " + engineVolume + " количество мест: " + getSeats();
     }
 
     public class Key {

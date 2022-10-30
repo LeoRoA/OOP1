@@ -3,11 +3,11 @@ package Animals;
 import java.util.Objects;
 
 public class Flying extends Birds{
-    private String movingType;
+    private final String movingType;
 
     public Flying(String name, int age, String habibat, String movingType) {
         super(name, age, habibat);
-        this.movingType = movingType;
+        this.movingType = ValidationUtil.valOrDefString(movingType, "short flights");
     }
     private void fly(){
         System.out.println("Полечу на солнце");

@@ -7,7 +7,7 @@ public class Flightless extends Birds {
 
     public Flightless(String name, int age, String habibat, String movingType) {
         super(name, age, habibat);
-        this.movingType = movingType;
+        this.movingType = ValidationUtil.valOrDefString(movingType,"jumping");
     }
     private void walk(){
         System.out.println("Пойду посмотрю на этих Икаров");

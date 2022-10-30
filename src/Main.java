@@ -7,12 +7,12 @@ import transport.Train;
 public class Main {
 
     public static void main(String[] args) {
-        //task1_1and2();
-        //task1_3();
-        //task1_4();
-        task1_5();
-        //task2_1();
-        //task2_2();
+//        task1_1and2();
+//        task1_3();
+//        task1_4();
+//        task1_5();
+//        task2_1();
+//        task2_2();
         task3_2();
         task3_3();
         task3_5();
@@ -104,7 +104,7 @@ public class Main {
                 Hyundai_Avante.brand, Hyundai_Avante.model, Hyundai_Avante.productionCountry,
                 Hyundai_Avante.color, Hyundai_Avante.engineVolume);
 
-    }*/
+    }
 
     private static void task1_4() {
         Human Максим = new Human(35, "Максим", "");
@@ -146,7 +146,7 @@ public class Main {
         //System.out.println(Audi_A8.toString3());
         //System.out.println(BMW_Z8.toString3());
         //System.out.println(Kia_Sportage.toString3());
-        //System.out.println(Hyundai_Avante.toString3());*/
+        //System.out.println(Hyundai_Avante.toString3());
 
         //task2_3
         System.out.println("Lada_Grande.checkValidNumber() = " + Lada_Grande.checkValidNumber());
@@ -164,7 +164,7 @@ public class Main {
 
         //task 3.4
         Lada_Grande.refill();
-    }
+    }*/
 
     /*
     public static void task2_1 () {
@@ -250,5 +250,7 @@ public class Main {
         System.out.println("Сокол: " + Falcon);
         System.out.println("Наличие дубликатов среди летающих птиц: " + (Swallow.equals(Albatros) || Falcon.equals(Swallow)));
     }
+
+
 }
 

@@ -15,8 +15,7 @@ public abstract class Birds extends Animals {
     }
 
     public void setHabibat(String habibat) {
-        if (habibat == null || habibat.isEmpty() || habibat.isBlank()) this.habibat = "default";
-        else this.habibat = habibat;
+        this.habibat = ValidationUtil.valOrDefString(habibat, "default");
     }
 
     public abstract void hunt();

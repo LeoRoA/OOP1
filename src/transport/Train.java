@@ -21,23 +21,19 @@ public class Train extends Transport {
     }
 
     public void setPriceTrainTicket(int priceTrainTicket) {
-        if (priceTrainTicket < 0) this.priceTrainTicket = Math.abs(priceTrainTicket);
-        else this.priceTrainTicket = priceTrainTicket;
+        this.priceTrainTicket = ValidationUtil.valOrDefInt(priceTrainTicket, 0);
     }
 
     public void setTravelTime(int travelTime) {
-        if (travelTime < 0) this.travelTime = Math.abs(travelTime);
-        else this.travelTime = travelTime;
+        this.travelTime = ValidationUtil.valOrDefInt(travelTime, 1);
     }
 
     public void setStartStation(String startStation) {
-        if (startStation == null || startStation.isEmpty() || startStation.isBlank()) this.startStation = "default";
-        else this.startStation = startStation;
+        this.startStation = ValidationUtil.valOrDefString(startStation,"default");
     }
 
     public void setLastStation(String lastStation) {
-        if (lastStation == null || lastStation.isEmpty() || lastStation.isBlank()) this.lastStation = "default";
-        else this.lastStation = lastStation;
+        this.startStation = ValidationUtil.valOrDefString(lastStation,"default");
     }
 
     public int getPriceTrainTicket() {
@@ -62,10 +58,7 @@ public class Train extends Transport {
     }
 
     public void setAmountWagons(int amountWagons) {
-        if (amountWagons == 0) this.amountWagons = 1;
-        else if (amountWagons < 0) {
-            this.amountWagons = Math.abs(amountWagons);
-        } else this.amountWagons = amountWagons;
+        this.amountWagons = ValidationUtil.valOrDefInt(amountWagons,1);
     }
 @Override
     public String toString() {

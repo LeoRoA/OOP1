@@ -6,8 +6,7 @@ public class Bus extends Transport {
     public Bus(String brand, String model, String color, int productionYear, String productionCountry, int maxSpeed,
                int seats, String fuelType) {
         super(brand, model, color, productionYear, productionCountry, maxSpeed);
-        if (seats < 0) this.seats = Math.abs(seats);
-        else this.seats = seats;
+       this.seats = ValidationUtil.valOrDefInt(seats, 8);
         setFuelType(fuelType);
     }
 

@@ -1,26 +1,21 @@
 package transport;
 
 public abstract class Transport {
-    private final String startStation;
+    private final String brand;
     private final String model;
 
     private String color;
     private final int productionYear;
     private final String productionCountry;
-    private int maxSpeed;
+    public int maxSpeed;
     private String fuelType;
 
     public Transport(String brand, String model, String color, int productionYear, String productionCountry,
                      int maxSpeed) {
-        if (brand == null || brand.isEmpty() || brand.isBlank()) this.startStation = "default";
-        else this.startStation = brand;
-        if (model == null || model.isEmpty() || model.isBlank()) this.model = "default";
-        else this.model = model;
-        if (productionYear <= 0) this.productionYear = 2000;
-        else this.productionYear = productionYear;
-        if (productionCountry == null || productionCountry.isEmpty() || productionCountry.isBlank())
-            this.productionCountry = "default";
-        else this.productionCountry = productionCountry;
+        this.brand = ValidationUtil.valOrDefString(brand, "default");
+        this.model = ValidationUtil.valOrDefString(model, "default");
+        this.productionYear = (int) ValidationUtil.valOrDefYear(productionYear);
+        this.productionCountry = ValidationUtil.valOrDefString(productionCountry, "default");
         setColor(color);
         setMaxSpeed(maxSpeed);
     }
@@ -32,13 +27,11 @@ public abstract class Transport {
     }
 
     public void setFuelType(String fuelType) {
-        if (fuelType.isEmpty() || fuelType.isBlank() || fuelType == null) {
-            this.fuelType = "default";
-        } else this.fuelType = fuelType;
+        this.fuelType = ValidationUtil.valOrDefString(fuelType, "default");
     }
 
     public String getBrand() {
-        return startStation;
+        return brand;
     }
 
     public String getModel() {
@@ -58,8 +51,7 @@ public abstract class Transport {
     }
 
     public void setColor(String color) {
-        if (color == null || color.isEmpty() || color.isBlank()) this.color = "белый";
-        else this.color = color;
+        this.color = ValidationUtil.valOrDefString(color, "белый");
     }
 
     public int getMaxSpeed() {
@@ -67,8 +59,7 @@ public abstract class Transport {
     }
 
     public void setMaxSpeed(int maxSpeed) {
-        if (maxSpeed < 0) this.maxSpeed = Math.abs(maxSpeed);
-        else this.maxSpeed = maxSpeed;
+        this.maxSpeed =  ValidationUtil.valOrDefInt(maxSpeed, 200);
     }
 
     public String toString() {

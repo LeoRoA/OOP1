@@ -19,7 +19,7 @@ public class Predators extends Mammals {
     }
 
     public void setFoodType(String foodType) {
-        this.foodType = foodType;
+        this.foodType = ValidationUtil.valOrDefString(foodType, "carrion");
     }
 
     @Override

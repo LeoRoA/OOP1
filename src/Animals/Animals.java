@@ -7,10 +7,8 @@ public abstract class Animals {
     private int birthYear;
 
     public Animals(String name, int age) {
-        if (name == null || name.isEmpty() || name.isBlank()) this.name = "noname";
-        else this.name = name;
-        if (age >= 0) this.birthYear = LocalDate.now().getYear() - age;
-        else this.birthYear = LocalDate.now().getYear() - Math.abs(age);
+        this.name = ValidationUtil.valOrDefString(name, "default");
+        this.birthYear = ValidationUtil.valOrDefYear(age);
     }
 
     public final String getName() {

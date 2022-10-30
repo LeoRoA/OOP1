@@ -4,14 +4,12 @@ import java.util.Objects;
 
 public abstract class Mammals extends Animals {
     private String habibat;
-    private int movingSpeed;
+    private final int movingSpeed;
 
     public Mammals(String name, int age, String habibat, int movingSpeed) {
         super(name, age);
         setHabibat(habibat);
-        if (movingSpeed < 0) this.movingSpeed = Math.abs(movingSpeed);
-        else if (movingSpeed == 0) this.movingSpeed = 5;
-        else this.movingSpeed = movingSpeed;
+       this.movingSpeed = ValidationUtil.valOrDefInt(movingSpeed, 5);
     }
 
     public String getHabibat() {
@@ -19,8 +17,7 @@ public abstract class Mammals extends Animals {
     }
 
     public void setHabibat(String habibat) {
-        if (habibat == null || habibat.isEmpty() || habibat.isBlank()) this.habibat = "default";
-        else this.habibat = habibat;
+         this.habibat = ValidationUtil.valOrDefString(habibat,"noname");
     }
 
     public int getMovingSpeed() {
