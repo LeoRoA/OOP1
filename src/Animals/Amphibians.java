@@ -2,7 +2,7 @@ package Animals;
 
 import java.util.Objects;
 
-public class Amphibians extends Animals{
+public class Amphibians extends Animals {
     private String habibat;
 
     public Amphibians(String name, int age, String habibat) {

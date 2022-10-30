@@ -218,7 +218,7 @@ public class Main {
         System.out.println("Газель: " + Gazel);
         System.out.println("Жираф: " + Giraffa);
         System.out.println("Лошадь: " + Horse);
-        System.out.println("Наличие дубликатов среди млекопитающих:" + (Gazel.equals(Giraffa)||Horse.equals(Gazel)));
+        System.out.println("Наличие дубликатов среди млекопитающих:" + (Gazel.equals(Giraffa) || Horse.equals(Gazel)));
 
         Predators Hyena = new Predators("Asante", 3, "Africa", 63, "антилопа");
         Predators Tiger = new Predators("Shere Khan", 9, "India", 65, "косуля");
@@ -232,7 +232,7 @@ public class Main {
         Amphibians Cerberus = new Amphibians("Naga", 4, "East Asia");
         System.out.println("Лягушка: " + Frog);
         System.out.println("Уж пресноводный: " + Cerberus);
-        System.out.println("Наличие дубликатов среди амфибий: "+ (Frog.equals(Cerberus)));
+        System.out.println("Наличие дубликатов среди амфибий: " + (Frog.equals(Cerberus)));
 
         Flightless Peacock = new Flightless("Pavel", 17, "India", "бег");
         Flightless Penguin = new Flightless("Skipper", 15, "Antarctica", "плавать");

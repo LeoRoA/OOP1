@@ -2,16 +2,18 @@ package Animals;
 
 import java.util.Objects;
 
-public class Flying extends Birds{
+public class Flying extends Birds {
     private final String movingType;
 
     public Flying(String name, int age, String habibat, String movingType) {
         super(name, age, habibat);
         this.movingType = ValidationUtil.valOrDefString(movingType, "short flights");
     }
-    private void fly(){
+
+    private void fly() {
         System.out.println("Полечу на солнце");
     }
+
     public String getMovingType() {
         return movingType;
     }
@@ -49,10 +51,11 @@ public class Flying extends Birds{
     public int hashCode() {
         return Objects.hash(super.hashCode(), getMovingType());
     }
+
     @Override
     public String toString() {
-        return super.toString()+" летающие Кличка - " + getName()+
-        ", возраст - "+ getAge() + ". Ареол обитания - " + getHabibat()+
+        return super.toString() + " летающие Кличка - " + getName() +
+                ", возраст - " + getAge() + ". Ареол обитания - " + getHabibat() +
                 ". Специфика - " + getMovingType() + "полет";
     }
 }

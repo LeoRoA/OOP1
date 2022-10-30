@@ -59,7 +59,7 @@ public abstract class Transport {
     }
 
     public void setMaxSpeed(int maxSpeed) {
-        this.maxSpeed =  ValidationUtil.valOrDefInt(maxSpeed, 200);
+        this.maxSpeed = ValidationUtil.valOrDefInt(maxSpeed, 200);
     }
 
     public String toString() {

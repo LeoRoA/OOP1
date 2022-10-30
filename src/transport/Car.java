@@ -18,7 +18,7 @@ public class Car extends Transport {
                String productionCountry, String transmission, String bodyStyle, int seats, boolean winterTires,
                String regNumber, int maxSpeed, String fuelType) {
         super(brand, model, color, productionYear, productionCountry, maxSpeed);
-        this.bodyStyle = ValidationUtil.valOrDefString(bodyStyle,"sedan");
+        this.bodyStyle = ValidationUtil.valOrDefString(bodyStyle, "sedan");
         this.seats = ValidationUtil.valOrDefInt(seats, 5);
         setEngineVolume(engineVolume);
         setTransmission(transmission);

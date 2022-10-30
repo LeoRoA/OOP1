@@ -54,11 +54,12 @@ public class Predators extends Mammals {
     public int hashCode() {
         return Objects.hash(getFoodType());
     }
+
     @Override
     public String toString() {
-        return super.toString()+" Подкласс хищники. Кличка - " + getName()+
-                ", возраст - "+ getAge() + ". Ареол обитания - " + getHabibat()+
+        return super.toString() + " Подкласс хищники. Кличка - " + getName() +
+                ", возраст - " + getAge() + ". Ареол обитания - " + getHabibat() +
                 ". Скорость передвижения - " + getMovingSpeed() +
-                ". Питается - "+ foodType;
+                ". Питается - " + foodType;
     }
 }

@@ -7,11 +7,13 @@ public class Flightless extends Birds {
 
     public Flightless(String name, int age, String habibat, String movingType) {
         super(name, age, habibat);
-        this.movingType = ValidationUtil.valOrDefString(movingType,"jumping");
+        this.movingType = ValidationUtil.valOrDefString(movingType, "jumping");
     }
-    private void walk(){
+
+    private void walk() {
         System.out.println("Пойду посмотрю на этих Икаров");
     }
+
     public String getMovingType() {
         return movingType;
     }
@@ -31,7 +33,7 @@ public class Flightless extends Birds {
         System.out.println("Спать не на ветке конечно опасно, но как иначе?");
     }
 
-@Override
+    @Override
     public void move() {
         System.out.println("Я могу " + movingType + ", вот так и буду делать");
     }
@@ -49,11 +51,12 @@ public class Flightless extends Birds {
     public int hashCode() {
         return Objects.hash(super.hashCode(), getMovingType());
     }
+
     @Override
     public String toString() {
-        return super.toString()+" нелетающие. Кличка - " + getName()+
-                    ", возраст - "+ getAge() + ". Ареол обитания - " + getHabibat()+
-                    ". Способ перемещения - " + getMovingType();
+        return super.toString() + " нелетающие. Кличка - " + getName() +
+                ", возраст - " + getAge() + ". Ареол обитания - " + getHabibat() +
+                ". Способ перемещения - " + getMovingType();
 
     }
 }

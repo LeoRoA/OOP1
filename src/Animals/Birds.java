@@ -32,6 +32,7 @@ public abstract class Birds extends Animals {
     public int hashCode() {
         return Objects.hash(getHabibat());
     }
+
     @Override
     public String toString() {
         return "Класс птицы.";

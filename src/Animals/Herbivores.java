@@ -58,9 +58,9 @@ public class Herbivores extends Mammals {
 
     @Override
     public String toString() {
-        return super.toString()+" Подкласс травоядные. Кличка - " + getName()+
-                ", возраст - "+ getAge() + ". Ареол обитания - " + getHabibat()+
+        return super.toString() + " Подкласс травоядные. Кличка - " + getName() +
+                ", возраст - " + getAge() + ". Ареол обитания - " + getHabibat() +
                 ". Скорость передвижения - " + getMovingSpeed() +
-                ". Питается - "+ foodType;
+                ". Питается - " + foodType;
     }
 }

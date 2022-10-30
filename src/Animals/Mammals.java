@@ -9,7 +9,7 @@ public abstract class Mammals extends Animals {
     public Mammals(String name, int age, String habibat, int movingSpeed) {
         super(name, age);
         setHabibat(habibat);
-       this.movingSpeed = ValidationUtil.valOrDefInt(movingSpeed, 5);
+        this.movingSpeed = ValidationUtil.valOrDefInt(movingSpeed, 5);
     }
 
     public String getHabibat() {
@@ -17,7 +17,7 @@ public abstract class Mammals extends Animals {
     }
 
     public void setHabibat(String habibat) {
-         this.habibat = ValidationUtil.valOrDefString(habibat,"noname");
+        this.habibat = ValidationUtil.valOrDefString(habibat, "noname");
     }
 
     public int getMovingSpeed() {
@@ -38,6 +38,7 @@ public abstract class Mammals extends Animals {
     public int hashCode() {
         return Objects.hash(getHabibat(), getMovingSpeed());
     }
+
     @Override
     public String toString() {
         return "Класс млекопитающие.";

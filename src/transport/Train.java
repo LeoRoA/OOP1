@@ -29,11 +29,11 @@ public class Train extends Transport {
     }
 
     public void setStartStation(String startStation) {
-        this.startStation = ValidationUtil.valOrDefString(startStation,"default");
+        this.startStation = ValidationUtil.valOrDefString(startStation, "default");
     }
 
     public void setLastStation(String lastStation) {
-        this.startStation = ValidationUtil.valOrDefString(lastStation,"default");
+        this.startStation = ValidationUtil.valOrDefString(lastStation, "default");
     }
 
     public int getPriceTrainTicket() {
@@ -58,9 +58,10 @@ public class Train extends Transport {
     }
 
     public void setAmountWagons(int amountWagons) {
-        this.amountWagons = ValidationUtil.valOrDefInt(amountWagons,1);
+        this.amountWagons = ValidationUtil.valOrDefInt(amountWagons, 1);
     }
-@Override
+
+    @Override
     public String toString() {
         return "Поезд " + super.toString() + " отходит от станции " + startStation + " и следует до станции " + lastStation +
                 ". Время в пути - " + getTravelTime() + ". Цена поездки - " + getPriceTrainTicket() + ", в поезде " +
